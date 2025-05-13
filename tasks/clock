@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+# ----------------
+# SCRIPT OVERVIEW:
+# ----------------
+# NexOS Task: Clock
+# This task displays the current time and system uptime
+# Implements standard close and minimize functionality:
+# - When the task is closed, it exits with code 0
+# - When the task is minimized, it exits with code 10
+# ----------------
+
+# ##########################################
+# DISPLAY CONFIGURATION
+# ##########################################
+# Display the task header
+echo '=== NexOS Clock ==='
+echo 'Press any key to access options'
+echo '----------------------------------------'
+
+# ##########################################
+# FUNCTIONS
+# ##########################################
+# Function to display current time and uptime
+display_time() {
+    clear
+    echo '=== NexOS Clock ==='
+    echo "Current time: $(date +"%H:%M:%S")"
+    echo "Current date: $(date +"%Y-%m-%d")"
+    echo "System uptime: $(uptime -p)"
+    echo '----------------------------------------'
+    echo "Press any key to show options"
+}
+
+# ##########################################
+# MAIN PROGRAM LOOP
+# ##########################################
+while true; do
+    # Display the current time
+    display_time
+    
+    # Check if a key has been pressed (with 3-second refresh)
+    read -t 3 -N 1 key
+    if [ $? -eq 0 ]; then
+        echo
+        echo "OPTIONS:"
+        echo "1. Close (exit)"
+        echo "2. Minimize (return to main menu)"
+        echo -n "Choose option: "
+        read option
+        
+        case $option in
+            1)
+                echo "Closing task..."
+                sleep 1
+                exit 0
+                ;;
+            2)
+                echo "Minimizing task..."
+                sleep 1
+                exit 10  # Special exit code for minimize
+                ;;
+            *)
+                echo "Invalid option. Continuing..."
+                sleep 1
+                ;;
+        esac
+    fi
+done
