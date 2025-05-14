@@ -208,7 +208,7 @@ int main() {
         display_main_menu();
         printf("Enter your choice: ");
         scanf("%d", &choice);
-        while (getchar() != '\n'); // Clear input buffer
+        while (getchar() != '\n'); 
         
         if (choice == 0) {
             shutdown_system();
@@ -218,7 +218,7 @@ int main() {
             display_applications_menu();
             printf("Select an application (0 to go back): ");
             scanf("%d", &submenu_choice);
-            while (getchar() != '\n'); // Clear input buffer
+            while (getchar() != '\n'); 
             
             if (submenu_choice > 0 && submenu_choice <= num_available_tasks) {
                 // Use exec-based launcher instead of system-based one
@@ -231,7 +231,7 @@ int main() {
                 display_task_manager();
                 printf("Enter action (0 to go back): ");
                 scanf("%d", &task_action);
-                while (getchar() != '\n'); // Clear input buffer
+                while (getchar() != '\n'); 
                 
                 if (task_action == 1) {
                     // Terminate a process
@@ -244,7 +244,7 @@ int main() {
                     int proc_id;
                     printf("Enter process ID to terminate: ");
                     scanf("%d", &proc_id);
-                    while (getchar() != '\n'); // Clear input buffer
+                    while (getchar() != '\n'); 
                     
                     for (int i = 0; i < MAX_TASKS; i++) {
                         if (process_table[i].pid == proc_id && process_table[i].is_active) {
@@ -257,7 +257,7 @@ int main() {
                     int proc_id;
                     printf("Enter process ID to minimize: ");
                     scanf("%d", &proc_id);
-                    while (getchar() != '\n'); // Clear input buffer
+                    while (getchar() != '\n'); 
                     
                     for (int i = 0; i < MAX_TASKS; i++) {
                         if (process_table[i].pid == proc_id && process_table[i].is_active) {
@@ -270,7 +270,7 @@ int main() {
                     int proc_id;
                     printf("Enter process ID to resume: ");
                     scanf("%d", &proc_id);
-                    while (getchar() != '\n'); // Clear input buffer
+                    while (getchar() != '\n'); 
                     
                     for (int i = 0; i < MAX_TASKS; i++) {
                         if (process_table[i].pid == proc_id && process_table[i].is_active && process_table[i].is_minimized) {
@@ -289,10 +289,10 @@ int main() {
                     int proc_id, signal_type;
                     printf("Enter process ID: ");
                     scanf("%d", &proc_id);
-                    while (getchar() != '\n'); // Clear input buffer
+                    while (getchar() != '\n'); 
                     printf("Enter signal type (1-SIGSTOP, 2-SIGCONT, 3-SIGTERM): ");
                     scanf("%d", &signal_type);
-                    while (getchar() != '\n'); // Clear input buffer
+                    while (getchar() != '\n'); 
                     
                     for (int i = 0; i < MAX_TASKS; i++) {
                         if (process_table[i].pid == proc_id && process_table[i].is_active) {
@@ -343,14 +343,16 @@ void initialize_process_table() {
 void boot_sequence() {
     system("clear");
     
-    // ASCII Art Logo
+    
     printf("\n\n");
-    printf("    ███╗   ██╗███████╗██╗  ██╗ ██████╗ ███████╗\n");
-    printf("    ████╗  ██║██╔════╝╚██╗██╔╝██╔═══██╗██╔════╝\n");
-    printf("    ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗\n");
-    printf("    ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚════██║\n");
-    printf("    ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║\n");
-    printf("    ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝\n");
+    printf("╔═══════════════════════════════════════════════════════╗\n");
+    printf("║ ███╗   ██╗███████╗██╗  ██╗ ██████╗ ███████╗           ║\n");
+    printf("║ ████╗  ██║██╔════╝╚██╗██╔╝██╔═══██╗██╔════╝           ║\n");
+    printf("║ ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗           ║\n");
+    printf("║ ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚════██║           ║\n");
+    printf("║ ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║           ║\n");
+    printf("║ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝           ║\n");
+    printf("╚═══════════════════════════════════════════════════════╝\n");
     printf("         Operating System Simulator v1.0\n\n");
     
     sleep(2);
@@ -379,14 +381,14 @@ void boot_sequence() {
         
         // Animated dots
         for (int j = 0; j < 3; j++) {
-            usleep(200000);  // Sleep for 200ms using usleep (takes microseconds)
+            usleep(200000);  
             printf(".");
             fflush(stdout);
         }
         
-        usleep(300000);  // Sleep for 300ms using usleep
+        usleep(300000);  
         printf(" [DONE]\n");
-        usleep(250000);  // Sleep for 250ms using usleep
+        usleep(250000);  
     }
     
     printf("\n");
@@ -403,15 +405,15 @@ void initialize_hardware() {
     
     printf("Enter available RAM (GB): ");
     scanf("%d", &hardware.ram_gb);
-    while (getchar() != '\n'); // Clear input buffer
+    while (getchar() != '\n'); 
     
     printf("Enter hard disk space (GB): ");
     scanf("%d", &hardware.hdd_gb);
-    while (getchar() != '\n'); // Clear input buffer
+    while (getchar() != '\n'); 
     
     printf("Enter number of CPU cores: ");
     scanf("%d", &hardware.cpu_cores);
-    while (getchar() != '\n'); // Clear input buffer
+    while (getchar() != '\n'); 
     
     // Initialize available resources
     hardware.available_ram = hardware.ram_gb * 1024; // Convert to MB
@@ -429,12 +431,12 @@ void display_main_menu() {
     // ASCII art header
     printf("\n");
     printf("╔═══════════════════════════════════════════════════════╗\n");
-    printf("║ ███╗   ██╗███████╗██╗  ██╗ ██████╗ ███████╗          ║\n");
-    printf("║ ████╗  ██║██╔════╝╚██╗██╔╝██╔═══██╗██╔════╝          ║\n");
-    printf("║ ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗          ║\n");
-    printf("║ ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚════██║          ║\n");
-    printf("║ ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║          ║\n");
-    printf("║ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝          ║\n");
+    printf("║ ███╗   ██╗███████╗██╗  ██╗ ██████╗ ███████╗           ║\n");
+    printf("║ ████╗  ██║██╔════╝╚██╗██╔╝██╔═══██╗██╔════╝           ║\n");
+    printf("║ ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗           ║\n");
+    printf("║ ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚════██║           ║\n");
+    printf("║ ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║           ║\n");
+    printf("║ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝           ║\n");
     printf("╚═══════════════════════════════════════════════════════╝\n");
     
     // System status info
@@ -479,25 +481,9 @@ void display_applications_menu() {
     printf("┌─────────────────────────────────────────────────────┐\n");
     
     for (int i = 0; i < num_available_tasks; i++) {
-        char icon = ' ';
-        
-        // Assign icons based on application type
-        if (strstr(available_tasks[i].name, "Calculator") != NULL) {
-            icon = 'C';
-        } else if (strstr(available_tasks[i].name, "Clock") != NULL) {
-            icon = 'T';
-        } else if (strstr(available_tasks[i].name, "Notepad") != NULL) {
-            icon = 'N';
-        } else if (strstr(available_tasks[i].name, "Game") != NULL) {
-            icon = 'G';
-        } else if (strstr(available_tasks[i].name, "Calendar") != NULL) {
-            icon = 'D';
-        } else {
-            icon = '*';
-        }
         
         printf("│  [%2d] %c %-20s RAM: %4d MB   HDD: %2d GB  │\n", 
-               i + 1, icon, available_tasks[i].name, 
+               i + 1, available_tasks[i].name, 
                available_tasks[i].ram_required, 
                available_tasks[i].hdd_required);
         
@@ -1153,7 +1139,7 @@ void change_scheduler() {
     int choice;
     printf("Select scheduler: ");
     scanf("%d", &choice);
-    while (getchar() != '\n'); // Clear input buffer
+    while (getchar() != '\n'); 
     
     switch (choice) {
         case 1:
