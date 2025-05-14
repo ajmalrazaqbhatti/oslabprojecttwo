@@ -3,28 +3,30 @@
 # ----------------
 # SCRIPT OVERVIEW:
 # ----------------
-# NexOS Task: wordcount
-# Simple word counter that counts words in user input
+# NexOS Task: Calculator
+# A simple calculator application
 # ----------------
 
 # ##########################################
 # DISPLAY CONFIGURATION
 # ##########################################
-echo '=== NexOS Word Counter ==='
-echo 'Enter text to count words (or "q" to quit)'
-echo '----------------------------------------'
+clear
+echo "===== Calculator ====="
+echo "This application performs basic arithmetic calculations."
+echo "Type 'options' for menu or 'q' to quit"
+echo "----------------------------------------"
 
 # ##########################################
 # MAIN PROGRAM LOOP
 # ##########################################
 while true; do
-  echo "Enter text (or 'options' for menu):"
-  read -e input
+  echo "Enter expression (e.g., 2 + 3) or 'options':"
+  read input
   
   # ##########################################
   # MENU HANDLING
   # ##########################################
-  # Check for menu command
+  # Check for options menu
   if [[ "$input" == "options" ]]; then
     echo "OPTIONS:"
     echo "1. Close (exit)"
@@ -50,22 +52,24 @@ while true; do
     esac
     continue
   fi
-  
-  # Check for exit condition
+    # Check for exit condition
   if [[ "$input" == "q" || "$input" == "Q" ]]; then
-    echo "Closing Word Counter..."
+    echo "Closing Calculator..."
     sleep 1
     exit 0
   fi
-  
+    # ##########################################
+  # CALCULATION LOGIC
   # ##########################################
-  # WORD COUNTING LOGIC
-  # ##########################################
-  # Count words
-  word_count=$(echo "$input" | wc -w)
-  char_count=$(echo "$input" | wc -c)
+  # Calculate the result using bc
+  result=$(echo "scale=6; $input" | bc -l 2>/dev/null)
   
-  echo "Word count: $word_count"
-  echo "Character count: $char_count"
+  # Check if calculation was successful
+  if [ $? -eq 0 ]; then
+    echo "Result: $result"
+  else
+    echo "Error: Invalid expression. Please try again."
+  fi
+  
   echo ""
 done

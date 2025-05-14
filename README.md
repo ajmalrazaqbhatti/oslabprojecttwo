@@ -54,12 +54,25 @@ The simulator includes the following applications:
 - System Monitor: Display system resource usage
 - And more...
 
+## Task Application Structure
+
+All task applications follow a standardized structure:
+
+1. **Header**: Contains script overview and display configuration
+2. **Menu Handling**: Consistent handling of options menu (close/minimize)
+3. **Functions**: Task-specific helper functions
+4. **Main Program Loop**: Core functionality of the task
+
+To create a new task, you can use the template in `tasks/template.sh`.
+
 ## Project Structure
 
 - `main.c`: Core OS simulator functionality
-- `tasks/`: Contains all task applications
+- `tasks/`: Contains all task applications (see [tasks/README.md](tasks/README.md))
 - `Makefile`: Build configuration
 - `create_structure.sh`: Script to set up the project structure
+- `standardize_tasks.sh`: Script to standardize task structures
+- `TASK_DOCUMENTATION.md`: Detailed documentation for task development
 
 ## Academic Purpose
 

@@ -147,21 +147,20 @@ typedef struct {
 } Task;
 
 Task available_tasks[] = {
-    {"Notepad", "./tasks/notepad", 256, 10, 2},
-    {"Calculator", "./tasks/calculator", 64, 2, 3},
-    {"Clock", "./tasks/clock", 64, 2, 3},
-    {"Prime Checker", "./tasks/primechecker", 64, 1, 2},
-    {"Unit Converter", "./tasks/unitconverter", 64, 2, 1},
-    {"Calendar", "./tasks/calendar", 128, 10, 2},
-    {"Palindrome Checker", "./tasks/palindrome", 64, 1, 1},
-    {"Number Sorter", "./tasks/sorter", 128, 2, 1},
-    {"Text Reverser", "./tasks/reverser", 64, 1, 2},
-    {"Word Counter", "./tasks/wordcount", 64, 2, 1},
-    {"Game - Minesweeper", "./tasks/minesweeper", 256, 20, 0},
-    {"Factorial Calculator", "./tasks/factorial", 64, 1, 2},
-    {"BMI Calculator", "./tasks/bmicalc", 96, 2, 2},
-    {"Temperature Converter", "./tasks/tempconverter", 64, 2, 3},
-    {"Password Generator", "./tasks/passwordgen", 64, 2, 1}
+    {"Notepad", "./tasks/notepad.sh", 256, 10, 2},
+    {"Calculator", "./tasks/calculator.sh", 64, 2, 3},
+    {"Clock", "./tasks/clock.sh", 64, 2, 3},
+    {"Prime Checker", "./tasks/primechecker.sh", 64, 1, 2},
+    {"Unit Converter", "./tasks/unitconverter.sh", 64, 2, 1},
+    {"Calendar", "./tasks/calendar.sh", 128, 10, 2},
+    {"Number Sorter", "./tasks/sorter.sh", 128, 2, 1},
+    {"Text Reverser", "./tasks/reverser.sh", 64, 1, 2},
+    {"Game - Minesweeper", "./tasks/minesweeper.sh", 256, 20, 0},
+    {"Factorial Calculator", "./tasks/factorial.sh", 64, 1, 2},
+    {"BMI Calculator", "./tasks/bmicalc.sh", 96, 2, 2},
+    {"Temperature Converter", "./tasks/tempconverter.sh", 64, 2, 3},
+    {"Password Generator", "./tasks/passwordgen.sh", 64, 2, 1},
+    {"File Manager", "./tasks/filemanager.sh", 128, 5, 2}
 };
 
 int num_available_tasks = sizeof(available_tasks) / sizeof(Task);
@@ -444,9 +443,9 @@ void display_main_menu() {
     printf("│ %-15s %-35s │\n", "MODE:", is_kernel_mode ? "[K] Kernel Mode" : "[U] User Mode");
     printf("│ %-15s %-35s │\n", "SCHEDULER:", get_scheduler_name(current_scheduler));
     printf("├─────────────────────────────────────────────────────┤\n");
-    printf("│ %-15s %d/%d MB                             │\n", "RAM:", hardware.available_ram, hardware.ram_gb * 1024);
-    printf("│ %-15s %d/%d GB                              │\n", "STORAGE:", hardware.available_hdd, hardware.hdd_gb);
-    printf("│ %-15s %d/%d                                │\n", "CPU CORES:", hardware.available_cores, hardware.cpu_cores);
+    printf("│ %-15s %d/%d MB                       │\n", "RAM:", hardware.available_ram, hardware.ram_gb * 1024);
+    printf("│ %-15s %d/%d GB                          │\n", "STORAGE:", hardware.available_hdd, hardware.hdd_gb);
+    printf("│ %-15s %d/%d                                 │\n", "CPU CORES:", hardware.available_cores, hardware.cpu_cores);
     printf("└─────────────────────────────────────────────────────┘\n");
     
     // Menu options
